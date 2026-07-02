@@ -14,6 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HomeScreen(title: "My Notes"));
+    return const MaterialApp(
+      home: HomeScreen(title: "My Notes"),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

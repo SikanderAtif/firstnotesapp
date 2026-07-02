@@ -1,0 +1,117 @@
+import 'package:firstnotesapp/models/priority.dart';
+import 'package:firstnotesapp/services/notes_helper.dart';
+import 'package:flutter/material.dart';
+
+class NoteScreen extends StatefulWidget {
+  const NoteScreen({super.key});
+
+  @override
+  State<NoteScreen> createState() => _NoteScreenState();
+}
+
+class _NoteScreenState extends State<NoteScreen> {
+  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+  Priority _selectedPriority = Priority.medium;
+
+  void _createNote() async {
+    String title = _controller.text.trim();
+    String body = _controller2.text.trim();
+
+    await NotesHelperDatabase.insert(title,body,_selectedPriority.label);
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('New Note'),
+        backgroundColor: Colors.red[600],
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Text(
+              'Title',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: _controller,
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
+
+            Row(
+              children: Priority.values.skip(1).map((p) {
+                final isSelected = _selectedPriority == p;
+
+                return Padding(
+                  padding: EdgeInsets.all(12),
+                  child: FilterChip(
+                    label: Text(
+                      p.label,
+                      style: TextStyle(
+                        color: isSelected ? p.color : Colors.white,
+                      ),
+                    ),
+                    backgroundColor: Colors.black,
+                    selected: isSelected,
+                    onSelected: (_) => setState(() => _selectedPriority = p),
+                    selectedColor: Colors.black,
+                    checkmarkColor: p.color,
+                    side: BorderSide(color: isSelected ? p.color : Colors.grey),
+                  ),
+                );
+              }).toList(),
+            ),
+
+            SizedBox(height: 24),
+            Text(
+              'Description',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: _controller2,
+              minLines: 10,
+              maxLines: 10,
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _createNote,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[600],
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Create', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
