@@ -65,23 +65,20 @@ void toggleSelection(int id, {bool reload = false}) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.red[600],
-        foregroundColor: Colors.white,
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Colors.white,
-          unselectedLabelColor: Colors.black,
-          labelColor: Colors.white,
-          dividerColor: Colors.black,
+          indicatorColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedLabelColor: Theme.of(context).colorScheme.surface,
+          labelColor: Theme.of(context).colorScheme.onPrimary,
+          dividerColor: Theme.of(context).colorScheme.surface,
           tabs: _tabs.map((t) => Tab(text: t)).toList(),
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.delete),
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onPrimary,
             onPressed: _deleteNotes,
           ),
         ],
@@ -121,8 +118,6 @@ void toggleSelection(int id, {bool reload = false}) {
       floatingActionButton: FloatingActionButton(
         onPressed: _openNoteScreen,
         tooltip: 'Add New Note',
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
         child: Icon(Icons.add),
       ),
     );

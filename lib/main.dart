@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'services/notes_helper.dart';
+import 'theme/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,9 +15,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(title: "My Notes"),
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.theme,
+      home: HomeScreen(title: "My Notes"),
     );
   }
 }

@@ -28,8 +28,8 @@ class _NoteScreenState extends State<NoteScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('New Note'),
-        backgroundColor: Colors.red[600],
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: Padding(
         padding: EdgeInsets.all(12),
@@ -38,7 +38,7 @@ class _NoteScreenState extends State<NoteScreen> {
             Text(
               'Title',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -46,7 +46,7 @@ class _NoteScreenState extends State<NoteScreen> {
             SizedBox(height: 12),
             TextField(
               controller: _controller,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -65,15 +65,15 @@ class _NoteScreenState extends State<NoteScreen> {
                     label: Text(
                       p.label,
                       style: TextStyle(
-                        color: isSelected ? p.color : Colors.white,
+                        color: isSelected ? p.color : Theme.of(context).colorScheme.onPrimary,
                       ),
                     ),
-                    backgroundColor: Colors.black,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     selected: isSelected,
                     onSelected: (_) => setState(() => _selectedPriority = p),
-                    selectedColor: Colors.black,
+                    selectedColor: Theme.of(context).colorScheme.surface,
                     checkmarkColor: p.color,
-                    side: BorderSide(color: isSelected ? p.color : Colors.grey),
+                    side: BorderSide(color: isSelected ? p.color : Theme.of(context).colorScheme.onSurface),
                   ),
                 );
               }).toList(),
@@ -83,7 +83,7 @@ class _NoteScreenState extends State<NoteScreen> {
             Text(
               'Description',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -93,7 +93,7 @@ class _NoteScreenState extends State<NoteScreen> {
               controller: _controller2,
               minLines: 10,
               maxLines: 10,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -104,10 +104,10 @@ class _NoteScreenState extends State<NoteScreen> {
             ElevatedButton(
               onPressed: _createNote,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red[600],
-                foregroundColor: Colors.white,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
-              child: Text('Create', style: TextStyle(color: Colors.white)),
+              child: Text('Create', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
             ),
           ],
         ),
