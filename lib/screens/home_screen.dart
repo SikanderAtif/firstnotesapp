@@ -76,7 +76,7 @@ void toggleSelection(int id, {bool reload = false}) {
           tabs: _tabs.map((t) => Tab(text: t)).toList(),
         ),
         actions: [
-          IconButton(
+          _sID.isEmpty ? SizedBox(width: 0) : IconButton(
             icon: Icon(Icons.delete),
             color: Theme.of(context).colorScheme.onPrimary,
             onPressed: _deleteNotes,
