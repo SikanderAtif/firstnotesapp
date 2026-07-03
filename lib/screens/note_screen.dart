@@ -25,7 +25,6 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('New Note'),
         backgroundColor: Theme.of(context).colorScheme.primary,

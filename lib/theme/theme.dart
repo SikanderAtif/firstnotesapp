@@ -2,25 +2,48 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 abstract class AppTheme {
-  static final ColorScheme _scheme = ColorScheme.dark(
-    primary: AppColors.primary,
-    surface: AppColors.background,
-    onPrimary: AppColors.onPrimary,
-    onSurface: AppColors.onBackground,
+  static final ColorScheme _darkScheme = ColorScheme.dark(
+    primary: AppColors.primaryDark,
+    surface: AppColors.backgroundDark,
+    onPrimary: AppColors.onPrimaryDark,
+    onSurface: AppColors.onBackgroundDark,
   );
 
-  static ThemeData get theme {
+  static final ColorScheme _lightScheme = ColorScheme.light(
+    primary: AppColors.primaryLight,
+    surface: AppColors.backgroundLight,
+    onPrimary: AppColors.onPrimaryLight,
+    onSurface: AppColors.onBackgroundLight,
+  );
+
+  static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: _scheme,
-      scaffoldBackgroundColor: _scheme.surface,
+      colorScheme: _darkScheme,
+      scaffoldBackgroundColor: _darkScheme.surface,
       appBarTheme: AppBarTheme(
-        backgroundColor: _scheme.primary,
-        foregroundColor: _scheme.onPrimary,
+        backgroundColor: _darkScheme.primary,
+        foregroundColor: _darkScheme.onPrimary,
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: _scheme.primary,
-        foregroundColor: _scheme.onPrimary,
+        backgroundColor: _darkScheme.primary,
+        foregroundColor: _darkScheme.onPrimary,
+      )
+    );
+  }
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: _lightScheme,
+      scaffoldBackgroundColor: _lightScheme.surface,
+      appBarTheme: AppBarTheme(
+        backgroundColor: _lightScheme.primary,
+        foregroundColor: _lightScheme.onPrimary,
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: _lightScheme.primary,
+        foregroundColor: _lightScheme.onPrimary,
       )
     );
   }
