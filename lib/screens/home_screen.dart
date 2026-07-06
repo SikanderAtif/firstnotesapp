@@ -63,7 +63,7 @@ void toggleSelection(int id, {bool reload = false}) {
 
   @override
   Widget build(BuildContext context) {
-    final _tabs = [AppLocalizations.of(context)!.allTabTitle, AppLocalizations.of(context)!.highTabTitle, AppLocalizations.of(context)!.mediumTabTitle, AppLocalizations.of(context)!.lowTabTitle];
+    final tabs = [AppLocalizations.of(context)!.allTabTitle, AppLocalizations.of(context)!.highTabTitle, AppLocalizations.of(context)!.mediumTabTitle, AppLocalizations.of(context)!.lowTabTitle];
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.homeTitle),
@@ -73,7 +73,7 @@ void toggleSelection(int id, {bool reload = false}) {
           unselectedLabelColor: Theme.of(context).colorScheme.surface,
           labelColor: Theme.of(context).colorScheme.onPrimary,
           dividerColor: Theme.of(context).colorScheme.surface,
-          tabs: _tabs.map((t) => Tab(text: t)).toList(),
+          tabs: tabs.map((t) => Tab(text: t)).toList(),
         ),
         actions: [
           _sID.isEmpty ? SizedBox(width: 0) : IconButton(
