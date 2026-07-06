@@ -1,0 +1,22 @@
+{
+    "appTitle": "تطبيق الملاحظات الأول",
+    "homeTitle": "ملاحظاتي",
+    "detailsTitle": "تفاصيل الملاحظة",
+    "noteTitle": "ملاحظة جديدة",
+    "allEmptyMessage": "لم يتم تدوين أي ملاحظات بعد",
+    "highEmptyMessage": "لا توجد ملاحظات ذات أولوية عالية",
+    "mediumEmptyMessage": "لا توجد ملاحظات ذات أولوية متوسطة",
+    "lowEmptyMessage": "لا توجد ملاحظات منخفضة الأولوية",
+    "fabToolTip": "إضافة ملاحظة جديدة",
+    "titleTextField": "عنوان",
+    "descriptionTextField": "تفصيل",
+    "createNoteButton": "يخلق",
+    "saveNoteButton": "يحفظ",
+    "lowPriority": "منخفضة",
+    "mediumPriority": "متوسطة",
+    "highPriority": "قصوى",
+    "allTabTitle": "الجميع",
+    "highTabTitle": "قصوى",
+    "mediumTabTitle": "متوسطة",
+    "lowTabTitle": "منخفضة"
+}

@@ -1,3 +1,4 @@
+import 'package:firstnotesapp/l10n/app_localizations.dart';
 import 'package:firstnotesapp/models/priority.dart';
 import 'package:firstnotesapp/services/notes_helper.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Note Details'),
+        title: Text(AppLocalizations.of(context)!.detailsTitle),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         actions: [
@@ -78,7 +79,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           children: [
             Text(
-              'Title',
+              AppLocalizations.of(context)!.titleTextField,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
@@ -105,7 +106,12 @@ class _DetailScreenState extends State<DetailScreen> {
                   padding: EdgeInsets.all(12),
                   child: FilterChip(
                     label: Text(
-                      p.label,
+                      switch(p) {
+                        Priority.none => '',
+                        Priority.low => AppLocalizations.of(context)!.lowPriority,
+                        Priority.medium => AppLocalizations.of(context)!.highPriority,
+                        Priority.high => AppLocalizations.of(context)!.mediumPriority,
+                      },
                       style: TextStyle(
                         color: isSelected ? p.color : Theme.of(context).colorScheme.onPrimary,
                       ),
@@ -123,7 +129,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
             SizedBox(height: 24),
             Text(
-              'Description',
+              AppLocalizations.of(context)!.descriptionTextField,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
@@ -149,7 +155,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
-              child: Text('Save', style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
+              child: Text(AppLocalizations.of(context)!.saveNoteButton, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
             ),
           ],
         ),

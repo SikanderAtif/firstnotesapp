@@ -8,7 +8,7 @@ class EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(_emptyMessage, style: TextStyle(color: Colors.white)),
+      child: Text(_emptyMessage, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
     );
   }
 }

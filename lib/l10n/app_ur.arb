@@ -1,0 +1,22 @@
+{
+    "appTitle": "پہلی نوٹس ایپ",
+    "homeTitle": "میرے نوٹس",
+    "detailsTitle": "نوٹ کی تفصیلات",
+    "noteTitle": "نیا نوٹ",
+    "allEmptyMessage": "ابھی تک کوئی نوٹس نہیں بنائے گئے",
+    "highEmptyMessage": "اعلیٰ ترجیح والے کوئی نوٹس نہیں",
+    "mediumEmptyMessage": "درمیانی ترجیح کے کوئی نوٹس نہیں",
+    "lowEmptyMessage": "کم ترجیح والے نوٹس نہیں",
+    "fabToolTip": "نیا نوٹ شامل کریں",
+    "titleTextField": "عنوان",
+    "descriptionTextField": "تفصيل",
+    "createNoteButton": "تخلیق کریں",
+    "saveNoteButton": "محفوظ کریں",
+    "lowPriority": "کم",
+    "mediumPriority": "درمیانہ",
+    "highPriority": "اعلیٰ",
+    "allTabTitle": "تمام",
+    "highTabTitle": "اعلیٰ",
+    "mediumTabTitle": "درمیانہ",
+    "lowTabTitle": "کم"
+}

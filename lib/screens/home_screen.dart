@@ -1,3 +1,4 @@
+import 'package:firstnotesapp/l10n/app_localizations.dart';
 import 'package:firstnotesapp/services/notes_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:firstnotesapp/models/priority.dart';
@@ -5,8 +6,7 @@ import 'package:firstnotesapp/screens/note_screen.dart';
 import 'package:firstnotesapp/widgets/tab_content.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String title;
-  const HomeScreen({super.key, required this.title});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -15,13 +15,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  static const _tabs = ['All', 'High', 'Medium', 'Low'];
   final Set<int> _sID = {};
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   void _openNoteScreen() async {
@@ -64,9 +63,10 @@ void toggleSelection(int id, {bool reload = false}) {
 
   @override
   Widget build(BuildContext context) {
+    final _tabs = [AppLocalizations.of(context)!.allTabTitle, AppLocalizations.of(context)!.highTabTitle, AppLocalizations.of(context)!.mediumTabTitle, AppLocalizations.of(context)!.lowTabTitle];
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(AppLocalizations.of(context)!.homeTitle),
         bottom: TabBar(
           controller: _tabController,
           indicatorColor: Theme.of(context).colorScheme.onPrimary,
@@ -89,25 +89,25 @@ void toggleSelection(int id, {bool reload = false}) {
           controller: _tabController,
           children: [
             TabContent(
-              emptyMessage: 'No Notes Made Yet',
+              emptyMessage: AppLocalizations.of(context)!.allEmptyMessage,
               priority: Priority.none,
               selectedIDs: _sID,
               onToggle: toggleSelection,
             ),
             TabContent(
-              emptyMessage: 'No High Priority Notes',
+              emptyMessage: AppLocalizations.of(context)!.highEmptyMessage,
               priority: Priority.high,
               selectedIDs: _sID,
               onToggle: toggleSelection,
             ),
             TabContent(
-              emptyMessage: 'No Medium Priority Notes',
+              emptyMessage: AppLocalizations.of(context)!.mediumEmptyMessage,
               priority: Priority.medium,
               selectedIDs: _sID,
               onToggle: toggleSelection,
             ),
             TabContent(
-              emptyMessage: 'No Low Priority Notes',
+              emptyMessage: AppLocalizations.of(context)!.lowEmptyMessage,
               priority: Priority.low,
               selectedIDs: _sID,
               onToggle: toggleSelection,
@@ -117,7 +117,7 @@ void toggleSelection(int id, {bool reload = false}) {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openNoteScreen,
-        tooltip: 'Add New Note',
+        tooltip: AppLocalizations.of(context)!.fabToolTip,
         child: Icon(Icons.add),
       ),
     );

@@ -1,0 +1,101 @@
+{
+    "appTitle": "First Notes App",
+    "@appTitle": {
+        "description": "Title of the Application"
+    },
+
+    "homeTitle": "My Notes",
+    "@homeTitle": {
+        "description": "Title for Home Screen"
+    },
+
+    "detailsTitle": "Note Details",
+    "@detailsTitle": {
+        "description": "Title for Details Screen"
+    },
+    
+    "noteTitle": "New Note",
+    "@noteTitle": {
+        "description": "Title for Note Screen"
+    },
+
+    "allEmptyMessage": "No Notes Made Yet",
+    "@allEmptyMessage": {
+        "description": "Empty Message for All Tab"
+    },
+
+    "highEmptyMessage": "No High Priority Notes",
+    "@highEmptyMessage": {
+        "description": "Empty Message for High Tab"
+    },
+
+    "mediumEmptyMessage": "No Medium Priority Notes",
+    "@mediumEmptyMessage": {
+        "description": "Empty Message for Medium Tab"
+    },
+
+    "lowEmptyMessage": "No Low Priority Notes",
+    "@lowMediumMessage": {
+        "description": "Empty Message for Low Tab"
+    },
+
+    "fabToolTip": "Add New Note",
+    "@fabToolTip": {
+        "description": "Tool Tip Text for Floating Action Button"
+    },
+
+    "titleTextField": "Title",
+    "@titleTextField": {
+        "description": "Text for the Title TextField Header/Title"
+    },
+
+    "descriptionTextField": "Description",
+    "@descriptionTextField": {
+        "description": "Text for the Description TextField Header/Title"
+    },
+
+    "createNoteButton": "Create",
+    "@createNoteButton": {
+        "description": "Text for the Create Note Button in note_screen.dart"
+    },
+
+    "saveNoteButton": "Save",
+    "@saveNoteButton": {
+        "description": "Text for the Save Note Button in details_screen.dart"
+    },
+
+    "lowPriority": "Low",
+    "@lowPriority": {
+        "description": "Text for Low Priority"
+    },
+
+    "mediumPriority": "Medium",
+    "@mediumPriority": {
+        "description": "Text for Medium Priority"
+    },
+
+    "highPriority": "High",
+    "@highPriority": {
+        "description": "Text for High Priority"
+    },
+
+    "allTabTitle" : "All",
+    "@allTabTitle": {
+        "description": "Text for All Tab Title"
+    },
+
+    "highTabTitle" : "High",
+    "@highTabTitle": {
+        "description": "Text for High Tab Title"
+    },
+
+    "mediumTabTitle" : "Medium",
+    "@mediumTabTitle": {
+        "description": "Text for Medium Tab Title"
+    },
+
+    "lowTabTitle" : "Low",
+    "@lowTabTitle": {
+        "description": "Text for Low Tab Title"
+    }
+}

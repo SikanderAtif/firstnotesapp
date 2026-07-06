@@ -9,5 +9,5 @@ abstract class AppColors {
   static const Color primaryLight = Color(0xFF585DE9);
   static const Color onPrimaryLight = Color(0xFF000000);
   static const Color backgroundLight = Color(0xFFF4F5F7);
-  static const Color onBackgroundLight = Color.fromARGB(237, 235, 202, 243);
+  static const Color onBackgroundLight = Color(0xEDEBCAF3);
 }
