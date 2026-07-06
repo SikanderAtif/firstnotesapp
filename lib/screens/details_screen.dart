@@ -1,3 +1,4 @@
+import 'package:firstnotesapp/l10n/app_localizations.dart';
 import 'package:firstnotesapp/models/priority.dart';
 import 'package:firstnotesapp/services/notes_helper.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,12 @@ class _DetailScreenState extends State<DetailScreen> {
     String title = _controller.text.trim();
     String body = _controller2.text.trim();
 
-    await NotesHelperDatabase.update(widget.id, title, body, _selectedPriority.label);
+    await NotesHelperDatabase.update(
+      widget.id,
+      title,
+      body,
+      _selectedPriority.label,
+    );
     Navigator.pop(context);
   }
 
@@ -56,17 +62,16 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('New Note'),
-        backgroundColor: Colors.red[600],
-        foregroundColor: Colors.white,
+        title: Text(AppLocalizations.of(context)!.detailsTitle),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         actions: [
           IconButton(
             onPressed: _deleteNote,
             icon: Icon(Icons.delete),
-            color: Colors.white,
-          )
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
         ],
       ),
       body: Padding(
@@ -74,9 +79,9 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           children: [
             Text(
-              'Title',
+              AppLocalizations.of(context)!.titleTextField,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -84,7 +89,7 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(height: 12),
             TextField(
               controller: _controller,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -101,17 +106,22 @@ class _DetailScreenState extends State<DetailScreen> {
                   padding: EdgeInsets.all(12),
                   child: FilterChip(
                     label: Text(
-                      p.label,
+                      switch(p) {
+                        Priority.none => '',
+                        Priority.low => AppLocalizations.of(context)!.lowPriority,
+                        Priority.medium => AppLocalizations.of(context)!.highPriority,
+                        Priority.high => AppLocalizations.of(context)!.mediumPriority,
+                      },
                       style: TextStyle(
-                        color: isSelected ? p.color : Colors.white,
+                        color: isSelected ? p.color : Theme.of(context).colorScheme.onPrimary,
                       ),
                     ),
-                    backgroundColor: Colors.black,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     selected: isSelected,
                     onSelected: (_) => setState(() => _selectedPriority = p),
-                    selectedColor: Colors.black,
+                    selectedColor: Theme.of(context).colorScheme.surface,
                     checkmarkColor: p.color,
-                    side: BorderSide(color: isSelected ? p.color : Colors.grey),
+                    side: BorderSide(color: isSelected ? p.color : Theme.of(context).colorScheme.onSurface),
                   ),
                 );
               }).toList(),
@@ -119,9 +129,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
             SizedBox(height: 24),
             Text(
-              'Description',
+              AppLocalizations.of(context)!.descriptionTextField,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -131,7 +141,7 @@ class _DetailScreenState extends State<DetailScreen> {
               controller: _controller2,
               minLines: 10,
               maxLines: 10,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -142,10 +152,10 @@ class _DetailScreenState extends State<DetailScreen> {
             ElevatedButton(
               onPressed: _updateNote,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red[600],
-                foregroundColor: Colors.white,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
-              child: Text('Save', style: TextStyle(color: Colors.white)),
+              child: Text(AppLocalizations.of(context)!.saveNoteButton, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
             ),
           ],
         ),

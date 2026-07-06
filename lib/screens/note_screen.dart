@@ -1,3 +1,4 @@
+import 'package:firstnotesapp/l10n/app_localizations.dart';
 import 'package:firstnotesapp/models/priority.dart';
 import 'package:firstnotesapp/services/notes_helper.dart';
 import 'package:flutter/material.dart';
@@ -25,20 +26,19 @@ class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('New Note'),
-        backgroundColor: Colors.red[600],
-        foregroundColor: Colors.white,
+        title: Text(AppLocalizations.of(context)!.noteTitle),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: Padding(
         padding: EdgeInsets.all(12),
         child: Column(
           children: [
             Text(
-              'Title',
+              AppLocalizations.of(context)!.titleTextField,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -46,7 +46,7 @@ class _NoteScreenState extends State<NoteScreen> {
             SizedBox(height: 12),
             TextField(
               controller: _controller,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -63,17 +63,22 @@ class _NoteScreenState extends State<NoteScreen> {
                   padding: EdgeInsets.all(12),
                   child: FilterChip(
                     label: Text(
-                      p.label,
+                      switch(p) {
+                        Priority.none => '',
+                        Priority.low => AppLocalizations.of(context)!.lowPriority,
+                        Priority.medium => AppLocalizations.of(context)!.highPriority,
+                        Priority.high => AppLocalizations.of(context)!.mediumPriority,
+                      },
                       style: TextStyle(
-                        color: isSelected ? p.color : Colors.white,
+                        color: isSelected ? p.color : Theme.of(context).colorScheme.onPrimary,
                       ),
                     ),
-                    backgroundColor: Colors.black,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
                     selected: isSelected,
                     onSelected: (_) => setState(() => _selectedPriority = p),
-                    selectedColor: Colors.black,
+                    selectedColor: Theme.of(context).colorScheme.surface,
                     checkmarkColor: p.color,
-                    side: BorderSide(color: isSelected ? p.color : Colors.grey),
+                    side: BorderSide(color: isSelected ? p.color : Theme.of(context).colorScheme.onSurface),
                   ),
                 );
               }).toList(),
@@ -81,9 +86,9 @@ class _NoteScreenState extends State<NoteScreen> {
 
             SizedBox(height: 24),
             Text(
-              'Description',
+              AppLocalizations.of(context)!.descriptionTextField,
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -93,7 +98,7 @@ class _NoteScreenState extends State<NoteScreen> {
               controller: _controller2,
               minLines: 10,
               maxLines: 10,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -104,10 +109,10 @@ class _NoteScreenState extends State<NoteScreen> {
             ElevatedButton(
               onPressed: _createNote,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red[600],
-                foregroundColor: Colors.white,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
-              child: Text('Create', style: TextStyle(color: Colors.white)),
+              child: Text(AppLocalizations.of(context)!.createNoteButton, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
             ),
           ],
         ),

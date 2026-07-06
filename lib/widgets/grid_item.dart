@@ -25,17 +25,17 @@ class GridItem extends StatelessWidget {
             shape: BoxShape.circle,
           ),
         ),
-        title: Text(title),
+        title: Text(title, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
       ),
       child: Ink(
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.2),
+          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
           padding: EdgeInsets.only(top: 45, left: 6, right: 6),
-          child: Text(body, style: TextStyle(color: Colors.white)),
+          child: Text(body, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
         ),
       ),
     );
